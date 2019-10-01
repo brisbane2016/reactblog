@@ -61,7 +61,7 @@ const UserForm = () => {
                         <label  className="col-sm-2 col-form-label">Email</label>
                         <div className="col-sm-10">
                             <input type="text" className="form-control" id="staticfEmail" 
-                            // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
                             placeholder="email@example.com" 
                               value={email}
                             onChange={(e) => setEmail(e.target.value)}
