@@ -18,8 +18,8 @@ const Header = () => {
     return (
         <>
 
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <Link exact className="navbar-brand" to="/">Navbar</Link>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+                <Link  className="navbar-brand" to="/">Navbar</Link>
 
                 <button onClick={handleToggle}
                     className="navbar-toggler"
@@ -51,11 +51,11 @@ const Header = () => {
                                 <div className={(navbarDropdown ? 'show ' : '') + 'dropdown-menu'}
                                 onMouseLeave={() => setnavbarDropdown(false)}
                                     aria-labelledby="navbarDropdown">
-                                    <Link className="dropdown-item" to="/importuser">User import</Link>
-                                    <Link className="dropdown-item" to="/importuser">User import</Link>
+                                    <Link className="dropdown-item" to="/importuserpage">User import</Link>
+                                    <Link className="dropdown-item" to="/importuserpage">User import</Link>
 
                                     <div className="dropdown-divider"></div>
-                                    <Link className="dropdown-item" to="/importuser">User import</Link>
+                                    <Link className="dropdown-item" to="/importuserpage">User import</Link>
                                 </div>
 
                             
