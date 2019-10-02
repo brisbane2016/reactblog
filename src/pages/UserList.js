@@ -1,23 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useState,useContext } from 'react';
 import { UserContext } from '../components/User/Context/UserContext';
 
+import Modal from 'react-modal';
+import SlidingPane from 'react-sliding-pane';
+import 'react-sliding-pane/dist/react-sliding-pane.css';
+
 const UserList = () => {
-    const { users } = useContext(UserContext);
+    const { users,userActions } = useContext(UserContext);
 
     console.log(users);
+
+
+    const [isPaneOpenLeft,setisPaneOpenLeft] = useState(false);
 
     const handleUserEdit = (id) => {
 
 
-        //alert(id);
+        alert(id);
+        setisPaneOpenLeft(true);
     }
 
 
     const handleUserDelete = (id) => {
 
-        //alert(id);
+        alert(id);
+
+        userActions.removeUserAction(id);
 
     }
+    Modal.setAppElement('body');
     return users.length ? (
 
         <>
@@ -47,8 +58,12 @@ const UserList = () => {
                                         <td>{user.username}</td>
                                         <td>{user.email}</td>
                                         <td>{user.address} {user.city} {user.zip}</td>
-                                        <td><button type="button" class="btn btn-primary" onClick={handleUserEdit(user.id)}>Edit</button></td>
-                                        <td><button type="button" class="btn btn-danger" onClick={handleUserDelete(user.id)}>Delete</button></td>
+                                        <td><button type="button" className="btn btn-primary" 
+                                        onClick={() => handleUserEdit(user.id)}>
+                                            Edit</button>
+                                            
+                                            </td>
+                                        <td><button type="button" className="btn btn-danger" onClick={()=> handleUserDelete(user.id)}>Delete</button></td>
                                     </tr>
 
 
@@ -59,19 +74,30 @@ const UserList = () => {
 
 
 
-
-
-
                             )}
                     </tbody>
                 </table>
+
+
+                <SlidingPane
+                 className ='sliding-pane-custom'
+                closeIcon={<div><i className="fas fa-times "></i></div>}
+                isOpen={ isPaneOpenLeft }
+              
+                from='left'
+                width='600px'
+                onRequestClose={ () => setisPaneOpenLeft(false)  }>
+                <div>And I am pane content on left.</div>
+            </SlidingPane>  
+
+
 
             </div>
         </>
 
     ) : (
             <>
-                <p>thest</p>
+                <p>No more users</p>
             </>
 
 

@@ -7,3 +7,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.sliding-pane-custom{
+  z-index:200;
+}
+
+.slide-pane__title-wrapper{
+  display:none!important;
+}
+
+.slide-pane__close {
+  /* margin-left: 24px; */
+  padding: 16px;
+  opacity: 1;
+  cursor: pointer;
+  float: right;
+  display: block;
+  position: absolute;
+  right: 0px;
+}
+.fixed-top{
+  z-index:0;
+}

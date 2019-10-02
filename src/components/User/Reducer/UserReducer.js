@@ -1,10 +1,10 @@
 import uuid from 'uuid/v1';
 
-export const UserReducer = (state,action) => {
-        console.log(action);
+export const UserReducer = (state, action) => {
+    console.log(action);
     switch (action.type) {
         case 'ADD_USER':
-            return [ ...state,{
+            return [...state, {
                 name: action.newuser.name,
                 username: action.newuser.username,
                 email: action.newuser.email,
@@ -13,12 +13,24 @@ export const UserReducer = (state,action) => {
                 zip: action.newuser.zip,
                 id: uuid()
             }]
-        // case 'REMOVE_BOOK':
-        //     return state.filter (book=>book.id !== action.id)
+        case 'EDIT_USER':
+            return state.map((user) => {
+                if (user.id === action.updateuser.id) {
+                    return {
+                        ...user,
+                        ...action.updatesuser
+                    };
+                } else {
+                    return user;
+                };
+            });
+        case 'REMOVE_USER':
+            return state.filter(user => user.id !== action.id)
+
+        case 'SET_USER':
+                return action.setuser;    
         default:
             return state
-
-
 
     }
 
