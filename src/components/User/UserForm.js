@@ -1,9 +1,7 @@
-import React,{useState,useContext} from 'react';
-import {UserContext} from './User/Context/UserContext';
-const UserForm = () => {
-    const {userActions} = useContext(UserContext);
+import React,{useState} from 'react';
 
-
+const UserForm = (props) => {
+   
     const [name,setName]=useState('');
     const [username,setUsername]=useState('');
     const [email,setEmail]=useState('');
@@ -14,15 +12,16 @@ const UserForm = () => {
     const handleSubmit = (e) =>{
         e.preventDefault();
 
-        userActions.addUserAction({
+        const newuser = {
             name,
             username,
             email,
             address,
             city,
             zip
-        });
 
+        }
+        props.handlePassUser(newuser);
         setName('');
         setUsername('');
         setEmail('');

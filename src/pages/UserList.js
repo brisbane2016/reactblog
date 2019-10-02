@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../components/User/Context/UserContext';
 
 import Modal from 'react-modal';
@@ -6,12 +6,12 @@ import SlidingPane from 'react-sliding-pane';
 import 'react-sliding-pane/dist/react-sliding-pane.css';
 
 const UserList = () => {
-    const { users,userActions } = useContext(UserContext);
+    const { users, userActions } = useContext(UserContext);
 
     console.log(users);
 
 
-    const [isPaneOpenLeft,setisPaneOpenLeft] = useState(false);
+    const [isPaneOpenLeft, setisPaneOpenLeft] = useState(false);
 
     const handleUserEdit = (id) => {
 
@@ -58,12 +58,12 @@ const UserList = () => {
                                         <td>{user.username}</td>
                                         <td>{user.email}</td>
                                         <td>{user.address} {user.city} {user.zip}</td>
-                                        <td><button type="button" className="btn btn-primary" 
-                                        onClick={() => handleUserEdit(user.id)}>
+                                        <td><button type="button" className="btn btn-primary"
+                                            onClick={() => handleUserEdit(user.id)}>
                                             Edit</button>
-                                            
-                                            </td>
-                                        <td><button type="button" className="btn btn-danger" onClick={()=> handleUserDelete(user.id)}>Delete</button></td>
+
+                                        </td>
+                                        <td><button type="button" className="btn btn-danger" onClick={() => handleUserDelete(user.id)}>Delete</button></td>
                                     </tr>
 
 
@@ -78,17 +78,18 @@ const UserList = () => {
                     </tbody>
                 </table>
 
+                {/* https://www.npmjs.com/package/react-sliding-pane */}
 
                 <SlidingPane
-                 className ='sliding-pane-custom'
-                closeIcon={<div><i className="fas fa-times "></i></div>}
-                isOpen={ isPaneOpenLeft }
-              
-                from='left'
-                width='600px'
-                onRequestClose={ () => setisPaneOpenLeft(false)  }>
-                <div>And I am pane content on left.</div>
-            </SlidingPane>  
+                    className='sliding-pane-custom'
+                    closeIcon={<div><i className="fas fa-times "></i></div>}
+                    isOpen={isPaneOpenLeft}
+
+                    from='left'
+                    width='600px'
+                    onRequestClose={() => setisPaneOpenLeft(false)}>
+                    <div>And I am pane content on left.</div>
+                </SlidingPane>
 
 
 
