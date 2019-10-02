@@ -8,7 +8,7 @@ import Header from './components/Header';
 import ImportUserPage from './pages/ImportUserPage';
 import HomePage from './pages/Home';
 import Albums from './pages/Albums';
-import User from './pages/User';
+import UserList from './pages/UserList';
 import UserConTextProvider from "./components/User/Context/UserContext";
 export const history = createBrowserHistory();
 function App() {
@@ -24,7 +24,7 @@ function App() {
               <Route  path="/" component={HomePage} exact={true}   />
               <Route path="/importuserpage" component={ImportUserPage} />
               <Route path="/albums" component={Albums} />
-              <Route path="/user" component={User} />
+              <Route path="/userlist" component={UserList} />
           </div>
         </div>
       </UserConTextProvider>

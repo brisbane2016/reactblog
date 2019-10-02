@@ -35,7 +35,7 @@ const Header = () => {
                             <NavLink  exact className="nav-link" to="/">Home <span className="sr-only"></span></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink  className="nav-link" to="/albums">Album</NavLink>
+                            <NavLink  className="nav-link" to="/userlist">User List</NavLink>
                         </li>
                      
                         <li className="nav-item dropdown" onMouseEnter={() => setnavbarDropdown(true)} >
