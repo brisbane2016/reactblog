@@ -32,8 +32,8 @@ const UserForm = (props) => {
 
     return (
         <>
-            <h1 className="h3 text-left text-capitalize font-weight-bold">Manual Input User information</h1>
-            <form className="jumbotron bg-light w-75 pt-4 pl-0" onSubmit={handleSubmit}>
+           
+            <form className=" pt-4 pl-10 pr-10" onSubmit={handleSubmit}>
 
                 <fieldset>
                     <legend className="p">User Information</legend>

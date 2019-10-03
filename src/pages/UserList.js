@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../components/User/Context/UserContext';
-
+import UserForm from '../components/User/UserForm';
 import Modal from 'react-modal';
 import SlidingPane from 'react-sliding-pane';
 import 'react-sliding-pane/dist/react-sliding-pane.css';
@@ -17,7 +17,10 @@ const UserList = () => {
 
 
         alert(id);
+
         setisPaneOpenLeft(true);
+
+
     }
 
 
@@ -28,7 +31,7 @@ const UserList = () => {
         userActions.removeUserAction(id);
 
     }
-    Modal.setAppElement('body');
+    Modal.setAppElement('div');
     return users.length ? (
 
         <>
@@ -88,7 +91,7 @@ const UserList = () => {
                     from='left'
                     width='600px'
                     onRequestClose={() => setisPaneOpenLeft(false)}>
-                    <div>And I am pane content on left.</div>
+                    <UserForm handlePassUser= {handleUserEdit}/>
                 </SlidingPane>
 
 
