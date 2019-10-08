@@ -1,7 +1,7 @@
 import uuid from 'uuid/v1';
 
 export const UserReducer = (state, action) => {
-    console.log(action);
+  
     switch (action.type) {
         case 'ADD_USER':
             return [...state, {
@@ -15,10 +15,13 @@ export const UserReducer = (state, action) => {
             }]
         case 'EDIT_USER':
             return state.map((user) => {
+                
                 if (user.id === action.updateuser.id) {
+              
+                
                     return {
                         ...user,
-                        ...action.updatesuser
+                        ...action.updateuser
                     };
                 } else {
                     return user;

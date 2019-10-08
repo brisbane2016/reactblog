@@ -14,7 +14,7 @@ const ImportUserPage = () => {
         <>
             <div className="row">
                 <div className="col-sm-6">
-                    <div class="jumbotron w-75">
+                    <div className="jumbotron w-75">
                         <h1 className="h3 text-left text-capitalize font-weight-bold">Manual Input User information</h1>
 
                         <UserForm handlePassUser={handleAddUser} />
