@@ -11,7 +11,7 @@ export const UserAction = (state,dispatch)=>{
 
     const setUserAction = (alluser) =>{
 
-    
+            
         dispatch({type: 'SET_USER',alluser});
     }    
 

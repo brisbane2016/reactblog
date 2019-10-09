@@ -17,8 +17,6 @@ export const UserReducer = (state, action) => {
             return state.map((user) => {
                 
                 if (user.id === action.updateuser.id) {
-              
-                
                     return {
                         ...user,
                         ...action.updateuser
