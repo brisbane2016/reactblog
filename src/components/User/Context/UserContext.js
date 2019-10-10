@@ -10,17 +10,17 @@ const UserContextProvider = (props) => {
     const [users, dispatch] = useReducer(UserReducer, [], () => {
 
         database.ref(`users`).once('value').then((snapshot) => {
-            const alluser = [];
+            const allusers = [];
 
             snapshot.forEach((childSnapshot) => {
                
-                alluser.push({
-
+                allusers.push({
+                    id: childSnapshot.key,
                     ...childSnapshot.val()
                 });
             });
       
-            dispatch({type: 'SET_USER',alluser});
+            dispatch({type: 'SET_USER',allusers});
         });
         
     });

@@ -1,4 +1,4 @@
-import uuid from 'uuid/v1';
+
 
 export const UserReducer = (state, action) => {
   
@@ -11,7 +11,7 @@ export const UserReducer = (state, action) => {
                 address: action.newuser.address,
                 city: action.newuser.city,
                 zip: action.newuser.zip,
-                id: uuid()
+                id: action.newuser.id
             }]
         case 'EDIT_USER':
             return state.map((user) => {
@@ -29,9 +29,9 @@ export const UserReducer = (state, action) => {
             return state.filter(user => user.id !== action.id)
 
         case 'SET_USER':
-                console.log(action);
+             
 
-                return action.alluser;    
+                return action.allusers;    
         default:
             return state
 

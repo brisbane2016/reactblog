@@ -2,10 +2,15 @@ import database from '../../../firebase/firebase';
 
 export const UserAction = (state,dispatch)=>{
 
-    const addUserAction = (newuser) =>{
+    const addUserAction = (adduser) =>{
 
-       
-        dispatch({type: 'ADD_USER',newuser});
+        database.ref(`users`).push(adduser).then((ref)=> {
+
+            const newuser ={id: ref.key,...adduser};
+
+            dispatch({type: 'ADD_USER',newuser});
+        })
+      
      
 
     } 
@@ -18,11 +23,11 @@ export const UserAction = (state,dispatch)=>{
             snapshot.forEach((childSnapshot) => {
                
                 allusers.push({
-
+                    id: childSnapshot.key,
                     ...childSnapshot.val()
                 });
             });
-      
+          
             dispatch({type: 'SET_USER',allusers});
         });
         
@@ -30,15 +35,27 @@ export const UserAction = (state,dispatch)=>{
 
        
     const updateUserAction = (updateuser) =>{
-        dispatch({type: 'EDIT_USER',updateuser});
+      
+        const updateUserNoID = {...updateuser};
+        delete updateUserNoID.id;
+       
+        const {id}= updateuser;
+
+        database.ref(`users/${id}`).update(updateUserNoID).then(() => {
+            dispatch({type: 'EDIT_USER',updateuser});
+          });
+      
+        
       
     } 
 
 
     const removeUserAction = (id) =>{
 
-       
-        dispatch({type: 'REMOVE_USER',id});
+        database.ref(`users/${id}`).remove().then(() => {
+            dispatch({type: 'REMOVE_USER',id});
+          });
+      
       
     } 
 
