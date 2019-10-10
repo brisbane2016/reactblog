@@ -1,3 +1,4 @@
+import database from '../../../firebase/firebase';
 
 export const UserAction = (state,dispatch)=>{
 
@@ -9,10 +10,22 @@ export const UserAction = (state,dispatch)=>{
 
     } 
 
-    const setUserAction = (alluser) =>{
+    const setUserAction = () =>{
 
-            
-        dispatch({type: 'SET_USER',alluser});
+        database.ref(`users`).once('value').then((snapshot) => {
+            const allusers = [];
+
+            snapshot.forEach((childSnapshot) => {
+               
+                allusers.push({
+
+                    ...childSnapshot.val()
+                });
+            });
+      
+            dispatch({type: 'SET_USER',allusers});
+        });
+        
     }    
 
        

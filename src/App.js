@@ -10,13 +10,14 @@ import HomePage from './pages/Home';
 import Albums from './pages/Albums';
 import UserListPage from './pages/UserListPage';
 import UserConTextProvider from "./components/User/Context/UserContext";
+
 export const history = createBrowserHistory();
 function App() {
   return (
 
     <Router history={history}>
       <UserConTextProvider>
-
+ 
         <div className="container-fluid jumbotron">
 
           <Header />

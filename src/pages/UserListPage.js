@@ -100,7 +100,7 @@ const UserList = () => {
             </div>
 
             {
-                users.length ? (
+               users && users.length ? (
 
                     <>
 

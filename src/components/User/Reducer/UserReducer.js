@@ -29,12 +29,15 @@ export const UserReducer = (state, action) => {
             return state.filter(user => user.id !== action.id)
 
         case 'SET_USER':
-                return action.setuser;    
+                console.log(action);
+
+                return action.alluser;    
         default:
             return state
 
     }
 
+    
 
 
 }
