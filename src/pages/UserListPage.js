@@ -64,7 +64,8 @@ const UserList = () => {
 
     }
     useEffect(() => {
-        console.log(updateUser)
+      //  console.log(updateUser);
+       // console.log(isPaneOpenLeft);
     }, [updateUser]);
 
     const handleUserDelete = (id) => {
@@ -100,7 +101,7 @@ const UserList = () => {
             </div>
 
             {
-               users && users.length ? (
+                users && users.length ? (
 
                     <>
 
@@ -115,6 +116,7 @@ const UserList = () => {
                                         <th scope="col">User Name</th>
                                         <th scope="col">Email address</th>
                                         <th scope="col">Address</th>
+                                        <th scope="col">Update day</th>
                                         <th scope="col"></th>
                                         <th scope="col"></th>
                                     </tr>
@@ -131,6 +133,7 @@ const UserList = () => {
                                                     <td>{user.username}</td>
                                                     <td>{user.email}</td>
                                                     <td>{user.address} {user.city} {user.zip}</td>
+                                                    <td>{user.updateDate}</td>
                                                     <td><button type="button" className="btn btn-primary"
                                                         onClick={() => handleUserEdit(user.id)}>
                                                         Edit</button>
@@ -153,19 +156,6 @@ const UserList = () => {
 
                             {/* https://www.npmjs.com/package/react-sliding-pane */}
 
-                            <SlidingPane
-                                className='sliding-pane-custom'
-                                closeIcon={<div><i className="fas fa-times "></i></div>}
-                                isOpen={isPaneOpenLeft}
-                                from='left'
-                                width='600px'
-                                onRequestClose={() => setisPaneOpenLeft(false)}>
-                                <UserForm
-                                    handlePassUser={handlePassUser}
-                                    updateUser={updateUser}
-
-                                />
-                            </SlidingPane>
 
 
 
@@ -183,8 +173,27 @@ const UserList = () => {
 
 
             }
+
+            <SlidingPane
+                className='sliding-pane-custom'
+                closeIcon={<div><i className="fas fa-times "></i></div>}
+                isOpen={isPaneOpenLeft}
+                from='left'
+                width='600px'
+                onRequestClose={() => setisPaneOpenLeft(false)}>
+                <UserForm
+                    handlePassUser={handlePassUser}
+                    updateUser={updateUser}
+
+                />
+            </SlidingPane>
+
+
+
+
             {/* https://material-ui.com/components/dialogs/ */}
-           
+
+
             <Dialog
                 open={dialogOpen}
                 onClose={handleDialogClose}

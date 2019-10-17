@@ -1,15 +1,14 @@
 import React, {useContext,useEffect } from 'react';
 import { UserContext } from '../components/User/Context/UserContext';
-//import database from '../firebase/firebase';
 
 const ImportUser = () => {
     const { users, userActions } = useContext(UserContext);
 
 
     const handleGetUsers = () => {
-     
-      userActions.setUserAction();
+      
 
+      
       
     }
 
@@ -17,18 +16,12 @@ const ImportUser = () => {
 
 
         console.log(users);
-        alert('s');
-
-        // users.map((user) => {
-        //     database.ref(`users`).push(user);
-
-        // });
 
 
     }
 
     useEffect(() => {
-        console.log(users);
+       
     }, [users]);
 
 

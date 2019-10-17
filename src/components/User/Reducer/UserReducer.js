@@ -1,7 +1,7 @@
 
 
 export const UserReducer = (state, action) => {
-  
+  console.log(action);
     switch (action.type) {
         case 'ADD_USER':
             return [...state, {
@@ -11,7 +11,9 @@ export const UserReducer = (state, action) => {
                 address: action.newuser.address,
                 city: action.newuser.city,
                 zip: action.newuser.zip,
-                id: action.newuser.id
+                id: action.newuser.id,
+                createDate: action.newuser.createDate,
+                updateDate: action.newuser.updateDate
             }]
         case 'EDIT_USER':
             return state.map((user) => {

@@ -1,30 +1,58 @@
 import React, { useState } from 'react';
-
+import moment from 'moment';
 const UserForm = (props) => {
   
     let updateUser,title;
-
+        // check updatUser exist and have user attribute, if have , it is update action
     if (props.updateUser && Object.keys(props.updateUser).length > 0) {
         
         updateUser = props.updateUser;
         title = "Update";
     } else {
-        updateUser = { name: '', username: '', email: '', address: '', city: '', zip: '' };
+        updateUser = {  name: '', 
+                        username: '', 
+                        email: '', 
+                        address: '', 
+                        city: '', 
+                        zip: '' ,
+                        createDate:'',
+                        updateDate:''
+                    };
         title ="Add"
     }
 
 
-    const { name: updatename, username: updateusername, email: updateemail, address: updateaddress, city: updatecity, zip: updatezip } = updateUser;
+    const { name: updatename, 
+            username: updateusername, 
+            email: updateemail, 
+            address: updateaddress, 
+            city: updatecity, 
+            zip: updatezip,
+            createDate:updateCreateDate} = updateUser;
+
     const [name, setName] = useState(updatename);
     const [username, setUsername] = useState(updateusername);
     const [email, setEmail] = useState(updateemail);
     const [address, setAddress] = useState(updateaddress);
     const [city, setCity] = useState(updatecity);
     const [zip, setZip] = useState(updatezip);
-   
+ 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const currentDate= moment().format('LLL');
+        let createDate;
+        let updateDate;
+       
+         if(title==="Add") {
+
+            createDate=updateDate = currentDate;
+           
+         }else{
+            createDate = updateCreateDate;
+            updateDate=currentDate;
+         }   
+         
 
         const newuser = {
             name,
@@ -32,9 +60,12 @@ const UserForm = (props) => {
             email,
             address,
             city,
-            zip
+            zip,
+            createDate,
+            updateDate
 
         }
+        console.log(newuser);
         props.handlePassUser(newuser);
         setName('');
         setUsername('');
@@ -42,6 +73,7 @@ const UserForm = (props) => {
         setAddress('');
         setCity('');
         setZip('');
+      
     }
 
     return (
@@ -77,7 +109,7 @@ const UserForm = (props) => {
                         <label className="col-sm-2 col-form-label">Email</label>
                         <div className="col-sm-10">
                             <input type="text" className="form-control" id="staticfEmail"
-                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                 placeholder="email@example.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
