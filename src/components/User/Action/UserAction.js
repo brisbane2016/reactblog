@@ -33,7 +33,12 @@ export const UserAction = (state,dispatch)=>{
         
     }    
 
-       
+    // https://firebase.google.com/docs/reference/js/firebase.database
+    // mulit user update at same time solution 
+    // If you need per-user storage in the database,
+    //  it doesn't make sense to store everyone's data in the same location in the database. 
+    //  Instead, use Firebase Authentication to get your users logged in with a unique user id, 
+    //  and use that user id to store user data in a dedicated location in the database.
     const updateUserAction = (updateuser) =>{
       
         const updateUserNoID = {...updateuser};
@@ -41,10 +46,20 @@ export const UserAction = (state,dispatch)=>{
        
         const {id}= updateuser;
 
-        database.ref(`users/${id}`).update(updateUserNoID).then(() => {
-            dispatch({type: 'EDIT_USER',updateuser});
-          });
-      
+        database.ref(`users/${id}`).once("value").then((snapshot)=>{
+
+            if(snapshot.exists()){
+                database.ref(`users/${id}`).update(updateUserNoID).then(() => {
+                    dispatch({type: 'EDIT_USER',updateuser});
+                  });
+              
+            }else{
+
+                alert("error");
+            }
+        })
+
+       
         
       
     } 
