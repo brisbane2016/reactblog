@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { NavLink ,Link} from 'react-router-dom';
 
+import {firebase} from '../firebase/firebase';
 const Header = () => {
-
+    
     // hover dropdow and show sub menu: hover event (in the mobile view, it is click and not hover ,you can't hover in phone )
     const [navbarDropdown, setnavbarDropdown] = useState(false);
 
@@ -12,7 +13,10 @@ const Header = () => {
         setnavtoggle(!navtoggle)
     }
 
-   
+    const btnClickLogout = () => {
+      
+        firebase.auth().signOut();
+    }
 
 
     return (
@@ -52,7 +56,7 @@ const Header = () => {
                                 onMouseLeave={() => setnavbarDropdown(false)}
                                     aria-labelledby="navbarDropdown">
                                     <Link className="dropdown-item" to="/importuserpage">User import</Link>
-                                    <Link className="dropdown-item" to="/importuserpage">User import</Link>
+                                    <Link className="dropdown-item" to="/login">User loign</Link>
 
                                     <div className="dropdown-divider"></div>
                                     <Link className="dropdown-item" to="/importuserpage">User import</Link>
@@ -62,6 +66,11 @@ const Header = () => {
                         </li>
 
                     </ul>
+
+                    <div className="my-2 my-lg-0">
+                     <button  className="button" onClick={btnClickLogout}>Logout</button>
+
+                    </div>
 
                 </div>
             </nav>

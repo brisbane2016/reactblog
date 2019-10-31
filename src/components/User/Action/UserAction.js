@@ -3,6 +3,7 @@ import database from '../../../firebase/firebase';
 export const UserAction = (state,dispatch)=>{
 
     const addUserAction = (adduser) =>{
+        alert('add user action');
 
         database.ref(`users`).push(adduser).then((ref)=> {
 
@@ -66,6 +67,8 @@ export const UserAction = (state,dispatch)=>{
 
 
     const removeUserAction = (id) =>{
+
+        alert(id);
 
         database.ref(`users/${id}`).remove().then(() => {
             dispatch({type: 'REMOVE_USER',id});

@@ -6,7 +6,7 @@ import database from '../../../firebase/firebase';
 export const UserContext = createContext();
 
 const UserContextProvider = (props) => {
-
+ 
     const [users, dispatch] = useReducer(UserReducer, [], () => {
 
         database.ref(`users`).once('value').then((snapshot) => {
@@ -32,7 +32,7 @@ const UserContextProvider = (props) => {
     useEffect(() => {
        
         //localStorage.setItem('users', JSON.stringify(users))
-        console.log(users);
+       // console.log(users);
     }, [users]);
 
     return (

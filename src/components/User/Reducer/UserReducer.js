@@ -1,7 +1,5 @@
-
-
 export const UserReducer = (state, action) => {
-  console.log(action);
+  
     switch (action.type) {
         case 'ADD_USER':
             return [...state, {

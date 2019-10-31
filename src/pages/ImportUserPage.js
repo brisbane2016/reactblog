@@ -2,13 +2,18 @@ import React, { useContext } from 'react';
 import UserForm from '../components/User/UserForm';
 import ImportUser from '../components/ImportUser';
 import { UserContext } from '../components/User/Context/UserContext';
+
+
 const ImportUserPage = () => {
-    const { userActions } = useContext(UserContext);
+    const { userActions} = useContext(UserContext);
+
     const handleAddUser = (user) => {
 
         console.log(user);
         userActions.addUserAction(user);
     }
+    
+
     return (
 
         <>
@@ -18,7 +23,7 @@ const ImportUserPage = () => {
                         <h1 className="h3 text-left text-capitalize font-weight-bold">Manual Input User information</h1>
 
                         <UserForm handlePassUser={handleAddUser} />
-
+                    
                     </div>
 
                 </div>

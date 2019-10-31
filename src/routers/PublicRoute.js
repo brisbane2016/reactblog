@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route } from "react-router-dom";
-import Header from '../components/Header';
+import { Route,Redirect } from "react-router-dom";
 
 export const PublicRoute = ({
 
@@ -8,26 +7,26 @@ export const PublicRoute = ({
     ...rest
 
 }) => (
-      
+
         <Route {...rest} component={(props) => (
 
-            
+            localStorage.getItem('user') ? (
+                <Redirect to="/" />
+            ) : (
+                    <div className="container-fluid ">
 
-                <div className="container-fluid jumbotron">
+                       
+                        <div className="main min-vh-100">
+                            <Component {...props} />
 
-                <Header />
-                <div className="main pt-5">
-                    <Component {...props} />
+                        </div>
 
-                </div>
+                    </div>
 
-                </div>
-       
+                )
 
-
-
-                )} />
+        )} />
     );
-        
-        
+
+
 export default PublicRoute;
